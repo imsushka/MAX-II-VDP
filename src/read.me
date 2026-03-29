@@ -1,1 +1,63 @@
+REGISTERS
 
+x0 - MEM_ADDR Address memory for writes
++--+------+
+|aa|xxxxxx|
++--+------+
+  ^
+  +----------- 00 - ADDR(5  to 0)
+               01 - ADDR(11 to 6)
+               10 - ADDR(17 to 12)
+               11 - increment 0-63 for autoinccrement
+
+x1 - MEM_DATA Data 8 bits. 
+x2 - REG_ADDR Address registers. 
+   0  - HCURSOR   Cursor X pos
+   1  - VCURSOR   Cursor Y pos
+   2  - HSCROLLM  Scroll horisontal main plane
+   3  - VSCROLLM  Scroll vertical main plane
+   4  - HSCROLLS  Scroll horisontal second plane
+   5  - VSCROLLS  Scroll vertical second plane
+   6  - HSCROLLB  Scroll horisontal background plane
+   7  - VSCROLLB  Scroll vertical background plane
+   8  - M_SPLIT0  Split top position main plane (0-31)
+   9  - M_SPLIT1  Split bottom position (32 + 0-31)
+   10 - S_SPLIT0  Split second plane
+   11 - S_SPLIT1
+   12 - B_SPLIT0  Split background plane
+   13 - B_SPLIT1
+   14 -
+   15 -
+
+x3 - REG_DATA Data 8 bits. 
+
+x4 - PALETE_DATA
++--+------+
+|aa|xxxxxx|
++--+------+
+  ^
+  +----------- 00 - R 
+               01 - G
+               10 - B
+               11 - no data, autoincrement
+
+x5 - PALETE_ADDRlo Low 256 colors
+x6 - PALETE_ADDRhi High 256 colors
+
+x7 - CONTROL
++----+----+
+|aaaa|xxxx|
++----+----+
+    0 -xxx  Master video mode
+      x---  Master multy font enable
+    1 --xx  Master scale          (00/01 - 1x, 10 - 2x, 11 - 4x)
+      xx--  Master bits           (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
+    2 -xxx  Slave video mode
+      x---  Slave multy font enable
+    3 --xx  Slave scale          (00 - Slave disable, 01 - 1x, 10 - 2x, 11 - 4x)
+      xx--  Slave bits           (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
+    4
+    5
+    6 ---x  Master cursor enable
+    7 ---x  Master split enable
+      --x-  Slave split enable
