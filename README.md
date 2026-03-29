@@ -4,6 +4,7 @@ VDP for old CPU
 EPM1270T144 + 256k x 16bit SRAM 10ns + VGA RAMDAC
 
 1024x768 resolution
+
 text mode - font
 -----------------------
 128x96    - 8x8
