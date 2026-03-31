@@ -325,48 +325,48 @@ BEGIN
 -- Addr  | Char | Lo              | Hi              | ExtFn1 | ExtFn0
 --       |      |                 |                 |        | 
 --       |      | 8x8 1bpp        |                 |        | 
--- 00000 |  0   | Bitmap L0/C7-0  | None/color      |   0    |   0
--- 00001 |  0   | Bitmap L0/C7-0  | None/color      |   0    |   1
--- 00002 |  0   | Bitmap L0/C7-0  | None/color      |   1    |   0
--- 00003 |  0   | Bitmap L0/C7-0  | None/color      |   1    |   1
+-- 00000 | 0(0) | Bitmap L0/C7-0  | None/color      |   0    |   0
+-- 00001 |0(512)| Bitmap L0/C7-0  | None/color      |   0    |   1
+-- 00002 |0(256)| Bitmap L0/C7-0  | None/color      |   1    |   0
+-- 00003 |0(768)| Bitmap L0/C7-0  | None/color      |   1    |   1
 -- ..... |      |                 |                 |        |      
--- 00004 |  0   | Bitmap L1/C7-0  | None/color      |   0    |   0
--- 00005 |  0   | Bitmap L1/C7-0  | None/color      |   0    |   1
--- 00006 |  0   | Bitmap L1/C7-0  | None/color      |   1    |   0
--- 00007 |  0   | Bitmap L1/C7-0  | None/color      |   1    |   1
+-- 00004 | 0(0) | Bitmap L1/C7-0  | None/color      |   0    |   0
+-- 00005 |0(512)| Bitmap L1/C7-0  | None/color      |   0    |   1
+-- 00006 |0(256)| Bitmap L1/C7-0  | None/color      |   1    |   0
+-- 00007 |0(768)| Bitmap L1/C7-0  | None/color      |   1    |   1
 -- ..... |      |                 |                 |        |
 -- ..... |      |                 |                 |        |      
--- 00040 |  1   | Bitmap L0/C7-0  | None/color      |   0    |   0
+-- 00040 | 1(1) | Bitmap L0/C7-0  | None/color      |   0    |   0
 --  ...  |      |                 |                 |        |
 --       |      |                 |                 |        |
 --       |      | 8x8 2bpp        |                 |        | 
--- 00000 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   0
--- 00001 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   1
--- 00002 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |   0
--- 00003 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |   1
+-- 00000 | 0(0) | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   0
+-- 00001 |0(512)| Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   1
+-- 00002 |0(256)| Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |   0
+-- 00003 |0(768)| Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |   1
 -- ..... |      |                 |                 |        |      
--- 00004 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |   0
--- 00005 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |   1
--- 00006 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |   0
--- 00007 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |   1
+-- 00004 | 0(0) | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |   0
+-- 00005 |0(512)| Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |   1
+-- 00006 |0(256)| Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |   0
+-- 00007 |0(768)| Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |   1
 -- ..... |      |                 |                 |        |      
 -- ..... |      |                 |                 |        |
--- 00040 |  1   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   0
+-- 00040 | 1(1) | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |   0
 --  ...  |      |                 |                 |        |
 --       |      |                 |                 |        | 
 --       |      | 8x8 4bpp        |                 |        | 
--- 00000 |  0   | Bitmap L0/C7-6  | Bitmap L0/C5-4  |   0    |  none
--- 00001 |  0   | Bitmap L0/C3-2  | Bitmap L0/C1-0  |   0    |  none
--- 00002 |  0   | Bitmap L0/C7-6  | Bitmap L0/C5-4  |   1    |  none
--- 00003 |  0   | Bitmap L0/C3-2  | Bitmap L0/C1-0  |   1    |  none
+-- 00000 | 0(0) | Bitmap L0/C7-6  | Bitmap L0/C5-4  |   0    |  none
+-- 00001 | 0(0) | Bitmap L0/C3-2  | Bitmap L0/C1-0  |   0    |  none
+-- 00002 |0(256)| Bitmap L0/C7-6  | Bitmap L0/C5-4  |   1    |  none
+-- 00003 |0(256)| Bitmap L0/C3-2  | Bitmap L0/C1-0  |   1    |  none
 -- ..... |      |                 |                 |        |      
--- 00004 |  0   | Bitmap L1/C7-6  | Bitmap L1/C5-4  |   0    |  none
--- 00005 |  0   | Bitmap L1/C3-2  | Bitmap L1/C1-0  |   0    |  none
--- 00006 |  0   | Bitmap L1/C7-6  | Bitmap L1/C5-4  |   1    |  none
--- 00007 |  0   | Bitmap L1/C3-2  | Bitmap L1/C1-0  |   1    |  none
+-- 00004 | 0(0) | Bitmap L1/C7-6  | Bitmap L1/C5-4  |   0    |  none
+-- 00005 | 0(0) | Bitmap L1/C3-2  | Bitmap L1/C1-0  |   0    |  none
+-- 00006 |0(256)| Bitmap L1/C7-6  | Bitmap L1/C5-4  |   1    |  none
+-- 00007 |0(256)| Bitmap L1/C3-2  | Bitmap L1/C1-0  |   1    |  none
 -- ..... |      |                 |                 |        |      
 -- ..... |      |                 |                 |        |      
--- 00040 |  1   | Bitmap L0/C7-6  | Bitmap L0/C5-4  |   0    |  none
+-- 00040 | 1(1) | Bitmap L0/C7-6  | Bitmap L0/C5-4  |   0    |  none
 --  ...  |      |                 |                 |        |
 --------------------------------------------------------------------------------
 --       |      | 16x16 1bpp      |                 |        | 
@@ -385,18 +385,18 @@ BEGIN
 --  ...  |      |                 |                 |        |
 --       |      |                 |                 |        |
 --       |      | 16x16 2bpp      |                 |        | 
--- 00000 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |  none
--- 00001 |  0   | Bitmap L0/C15-12| Bitmap L0/C11-8 |   0    |  none
--- 00002 |  0   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |  none
--- 00003 |  0   | Bitmap L0/C15-12| Bitmap L0/C11-8 |   1    |  none
+-- 00000 | 0(0) | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |  none
+-- 00001 | 0(0) | Bitmap L0/C15-12| Bitmap L0/C11-8 |   0    |  none
+-- 00002 |0(256)| Bitmap L0/C7-4  | Bitmap L0/C3-0  |   1    |  none
+-- 00003 |0(256)| Bitmap L0/C15-12| Bitmap L0/C11-8 |   1    |  none
 -- ..... |      |                 |                 |        |      
--- 00004 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |  none
--- 00005 |  0   | Bitmap L1/C15-12| Bitmap L1/C11-8 |   0    |  none
--- 00006 |  0   | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |  none
--- 00007 |  0   | Bitmap L1/C15-12| Bitmap L1/C11-8 |   1    |  none
+-- 00004 | 0(0) | Bitmap L1/C7-4  | Bitmap L1/C3-0  |   0    |  none
+-- 00005 | 0(0) | Bitmap L1/C15-12| Bitmap L1/C11-8 |   0    |  none
+-- 00006 |0(256)| Bitmap L1/C7-4  | Bitmap L1/C3-0  |   1    |  none
+-- 00007 |0(256)| Bitmap L1/C15-12| Bitmap L1/C11-8 |   1    |  none
 -- ..... |      |                 |                 |        |      
 -- ..... |      |                 |                 |        |      
--- 00040 |  1   | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |  none
+-- 00040 | 1(1) | Bitmap L0/C7-4  | Bitmap L0/C3-0  |   0    |  none
 --  ...  |      |                 |                 |        |
 --       |      |                 |                 |        | 
 --       |      | 16x16 4bpp      |                 |        | 
@@ -470,11 +470,14 @@ M_FBIG       <= M_F32x32 OR M_F16x32 OR M_F32x16;
 --M_GRAF1x1    <= M_FONT_1bpp AND M_SCALE_x1;
 
 --M_GRAF+      <= (M_GRAF1x1 OR M_GRAF1x2 OR M_GRAF1x4 OR M_GRAF2x2 OR M_GRAF2x4 OR M_GRAF4x4) AND M_GRAF;
+
 -------------------------------------------------------------------------------
 M_DOTClk     <= '1' WHEN ( (M_SCALE_x1 = '1') OR
                            (M_SCALE_x2 = '1' AND H(0) = '0') OR
                            (M_SCALE_x4 = '1' AND H(1 DOWNTO 0) = "00") )
                            ELSE '0';
+
+--M_DOTClk     <= M_SCALE_x1 OR (M_SCALE_x2 AND NOT(H(0))) OR (M_SCALE_x4 AND NOT(H(1)) AND NOT(H(0)));
 -------------------------------------------------------------------------------
 M_COLs       <= H(6 DOWNTO 2) WHEN ( M_SCALE_x4 = '1' ) ELSE
                 H(5 DOWNTO 1) WHEN ( M_SCALE_x2 = '1' ) ELSE
@@ -568,6 +571,7 @@ S_EXTATR     <= NOT(S_FONT_1bpp);
 S_FEXTEND    <= S_EXTATR AND NOT(CONTROL(10));
 
 S_FBIG       <= S_F32x32 OR S_F16x32 OR S_F32x16;
+
 -------------------------------------------------------------------------------
 S_DOTClk     <= '1' WHEN ( (S_SCALE_x1 = '1') OR
                            (S_SCALE_x2 = '1' AND H(0) = '0') OR
@@ -703,6 +707,7 @@ STAGE4       <=      H(2)   AND NOT(H(1)) AND NOT(H(0));
 STAGE5       <=      H(2)   AND NOT(H(1)) AND     H(0);
 STAGE6       <=      H(2)   AND     H(1)  AND NOT(H(0));
 STAGE7       <=      H(2)   AND     H(1)  AND     H(0);
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -761,13 +766,13 @@ BEGIN                         --
       M_FONT0 <= MDi;         --
     END IF;                   --
     IF STAGE2 = '1' THEN      --
-      M_FONT1 <= MDi;         --
+      S_FONT0 <= MDi;         --
     END IF;                   --
     IF STAGE3 = '1' THEN      --
-      M_FONT2 <= MDi;         --
+      M_FONT1 <= MDi;         --
     END IF;                   --
     IF STAGE4 = '1' THEN      --
-      S_FONT0 <= MDi;         --
+      M_FONT2 <= MDi;         --
     END IF;                   --
     IF STAGE5 = '1' THEN      --
       S_FONT1 <= MDi;         --
@@ -1039,10 +1044,10 @@ BEGIN                                                                           
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE0 = '1' THEN                                                        --
---      vMLINE := M_ROWs;                                                         --
---      vMCOL  := M_COLs;                                                         --
---      vSLINE := S_ROWs;                                                         --
---      vSCOL  := S_COLs;                                                         --
+      vMLINE := M_ROWs;                                                         --
+      vMCOL  := M_COLs;                                                         --
+      vSLINE := S_ROWs;                                                         --
+      vSCOL  := S_COLs;                                                         --
 --      vBLINE := B_ROWs;                                                         --
 --      vBCOL  := B_COLs;                                                         --
                                                                                   
@@ -1050,120 +1055,122 @@ BEGIN                                                                           
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE1 = '1' THEN                                                        --
---      vFONT := MDi( 7 DOWNTO 0);                                                --
---      vATR  := MDi(15 DOWNTO 8);                                                --
-                                                                                  
---      IF M_EXTATR = '1' AND vATR(7) = '1' THEN                                  --
---        vMLINE := NOT(vMLINE);                                                  --
---      END IF;                                                                   --
-                                                                                  
---      IF M_EXTATR = '1' AND vATR(6) = '1' THEN                                  --
---        vMCOL := NOT(vMCOL);                                                    --
---      END IF;                                                                   --
-                                                                                  
---      IF M_EXTATR = '1' AND vATR(5) = '1' THEN                                  --
---        vFONT(2) := (vFONT(2) AND NOT(vFONT(0))) OR (ANIMAT(2) AND vFONT(0));   --
---        vFONT(1) := ANIMAT(1);                                                  --
---        vFONT(0) := ANIMAT(0);                                                  --
---      END IF;                                                                   --
-                                                                                  
---      IF CONTROL(2) = '1' THEN                                                  --
---        vADDR(15 DOWNTO 8) := vFONT;                                            --
---        vADDR( 7 DOWNTO 3) := vMLINE;                                           --
---        vADDR(2)           := M_F32Pix AND vMCOL(4);                            --
---      ELSE                                                                      --
---        vADDR(15)          := M_V(1);                                           --
---        vADDR(14)          := M_V(0);                                           --
---        vADDR(13 DOWNTO 6) := vFONT;                                            --
---        vADDR(5)           := NOT(M_F08line) AND vMLINE(3);                     --
---        vADDR(4 DOWNTO 2)  := vMLINE(2 DOWNTO 0);                               --
---      END IF;                                                                   --
-                                                                                  
---      IF M_F08Pix = '1' THEN                                                    --
---        vADDR(1) := M_FEXTEND AND vATR(3);                                      --
---      ELSE                                                                      --
---        vADDR(1) := NOT(M_FONT_1bpp OR M_FONT_1bppE) AND vMCOL(3);              --
---      END IF;                                                                   --
-                                                                                  
---      IF M_FONT_4bpp = '1' THEN                                                 --
---        vADDR(0)  := vMCOL(2);                                                  --
---      ELSE                                                                      --
---        vADDR(0) := M_FEXTEND AND vATR(4);                                      --
---      END IF;                                                                   --
-                                                                                  
---      MA <= "10" & vADDR;                                                       --
-      MA <= "10" & M_FADDR & M_FA00;
+      MA <= S_ADDR;                                                             --
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE2 = '1' THEN                                                        --
---      IF M_FONT_4bpp = '1' THEN                                                 --
---        vADDR(0) := NOT(vMCOL(2));                                              --
---      ELSE                                                                      --
---        vADDR(0) := M_FEXTEND AND vATR(4);                                      --
---      END IF;                                                                   --
-                                                                                  
---      MA <= "10" & vADDR;                                                       --
-      MA <= "10" & M_FADDR & M_FA01;
+--      vFONT := MDi( 7 DOWNTO 0);                                                --
+--      vATR  := MDi(15 DOWNTO 8);                                                --
+                                                                                
+--      IF M_EXTATR = '1' AND M_FONT0(15) = '1' THEN                              
+--        vMLINE := NOT(vMLINE);                                                  
+--      END IF;                                                                   
+                                                                                
+--      IF M_EXTATR = '1' AND M_FONT0(14) = '1' THEN                              
+--        vMCOL := NOT(vMCOL);                                                    
+--      END IF;                                                                   
+                                                                                
+--      vFONT := M_FONT0(7 DOWNTO 0);                                             
+--      IF M_EXTATR = '1' AND M_FONT0(13) = '1' THEN                              
+--        vFONT(2) := (vFONT(2) AND NOT(vFONT(0))) OR (ANIMAT(2) AND vFONT(0));   
+--        vFONT(1) := ANIMAT(1);                                                  
+--        vFONT(0) := ANIMAT(0);                                                  
+--      END IF;                                                                   
+                                                                                
+--      IF M_FBIG = '1' THEN                                                      
+--        vADDR(15 DOWNTO 8) := vFONT;                                            
+--        vADDR( 7 DOWNTO 3) := vMLINE;                                           
+--        vADDR(2)           := M_F32Pix AND vMCOL(4);                            
+--      ELSE                                                                      
+--        vADDR(15)          := M_V(1);                                           
+--        vADDR(14)          := M_V(0);                                           
+--        vADDR(13 DOWNTO 6) := vFONT;                                            
+--        vADDR(5)           := NOT(M_F08line) AND vMLINE(3);                     
+--        vADDR(4 DOWNTO 2)  := vMLINE(2 DOWNTO 0);                               
+--      END IF;                                                                   
+                                                                                
+--      IF M_F08Pix = '1' THEN                                                    
+--        vADDR(1) := M_FEXTEND AND M_FONT0(11);                                  
+--      ELSE                                                                      
+--        vADDR(1) := NOT(M_FONT_1bpp OR M_FONT_1bppE) AND vMCOL(3);              
+--      END IF;                                                                   
+                                                                                
+--      IF M_FONT_4bpp = '1' THEN                                                 
+--        vADDR(0)  := vMCOL(2);                                                  
+--      ELSE                                                                      
+--        vADDR(0) := M_FEXTEND AND M_FONT0(12);                                  
+--      END IF;                                                                   
+                                                                                
+--      MA <= "10" & vADDR;                                                       
+      MA <= "10" & M_FADDR & M_FA00;
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE3 = '1' THEN                                                        --
-      MA <= S_ADDR;                                                             --
+--      IF M_FONT_4bpp = '1' THEN                                                 
+--        vADDR(0) := NOT(vMCOL(2));                                              
+--      ELSE                                                                      
+--        vADDR(0) := M_FEXTEND AND M_FONT0(12);                                  
+--      END IF;                                                                   
+                                                                                  
+--      MA <= "10" & vADDR;                                                       
+      MA <= "10" & M_FADDR & M_FA01;
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE4 = '1' THEN                                                        --
 --      vFONT := MDi( 7 DOWNTO 0);                                                --
 --      vATR  := MDi(15 DOWNTO 8);                                                --
+                                                                                
+--      IF S_EXTATR = '1' AND S_FONT0(15) = '1' THEN                              
+--        vSLINE := NOT(vSLINE);                                                  
+--      END IF;                                                                   
                                                                                   
---      IF S_EXTATR = '1' AND vATR(7) = '1' THEN                                  --
---        vSLINE := NOT(vSLINE);                                                  --
---      END IF;                                                                   --
+--      IF S_EXTATR = '1' AND S_FONT0(14) = '1' THEN                              
+--        vSCOL := NOT(vSCOL);                                                    
+--      END IF;                                                                   
                                                                                   
---      IF S_EXTATR = '1' AND vATR(6) = '1' THEN                                  --
---        vSCOL := NOT(vSCOL);                                                    --
---      END IF;                                                                   --
+--      vFONT := S_FONT0(7 DOWNTO 0);                                             
+--      IF S_EXTATR = '1' AND S_FONT0(13) = '1' THEN                              
+--        vFONT(2) := (vFONT(2) AND NOT(vFONT(0))) OR (ANIMAT(2) AND vFONT(0));   
+--        vFONT(1) := ANIMAT(1);                                                  
+--        vFONT(0) := ANIMAT(0);                                                  
+--      END IF;                                                                   
                                                                                   
---      IF S_EXTATR = '1' AND vATR(5) = '1' THEN                                  --
---        vFONT(2) := (vFONT(2) AND NOT(vFONT(0))) OR (ANIMAT(2) AND vFONT(0));   --
---        vFONT(1) := ANIMAT(1);                                                  --
---        vFONT(0) := ANIMAT(0);                                                  --
---      END IF;                                                                   --
+--      IF S_FBIG = '1' THEN                                                      
+--        vADDR(15 DOWNTO 8) := vFONT;                                            
+--        vADDR( 7 DOWNTO 3) := vSLINE;                                           
+--        vADDR(2)           := S_F32Pix AND vSCOL(4);                            
+--      ELSE                                                                      
+--        vADDR(15)          := S_V(1);                                           
+--        vADDR(14)          := S_V(0);                                           
+--        vADDR(13 DOWNTO 6) := vFONT;                                            
+--        vADDR(5)           := NOT(S_F08line) AND vSLINE(3);                     
+--        vADDR(4 DOWNTO 2)  := vSLINE(2 DOWNTO 0);                               
+--      END IF;                                                                   
                                                                                   
---      IF CONTROL(10) = '1' THEN                                                 --
---        vADDR(15 DOWNTO 8) := vFONT;                                            --
---        vADDR( 7 DOWNTO 3) := vSLINE;                                           --
---        vADDR(2)           := S_F32Pix AND vSCOL(4);                            --
---      ELSE                                                                      --
---        vADDR(15)          := S_V(1);                                           --
---        vADDR(14)          := S_V(0);                                           --
---        vADDR(13 DOWNTO 6) := vFONT;                                            --
---        vADDR(5)           := NOT(S_F08line) AND vSLINE(3);                     --
---        vADDR(4 DOWNTO 2)  := vSLINE(2 DOWNTO 0);                               --
---      END IF;                                                                   --
+--      IF S_F08Pix = '1' THEN                                                    
+--        vADDR(1) := S_FEXTEND AND S_FONT0(11);                                  
+--      ELSE                                                                      
+--        vADDR(1) := NOT(S_FONT_1bpp OR S_FONT_1bppE) AND vSCOL(3);              
+--      END IF;                                                                   
                                                                                   
---      IF S_F08Pix = '1' THEN                                                    --
---        vADDR(1) := S_FEXTEND AND vATR(3);                                      --
---      ELSE                                                                      --
---        vADDR(1) := NOT(S_FONT_1bpp OR S_FONT_1bppE) AND vSCOL(3);              --
---      END IF;                                                                   --
+--      IF S_FONT_4bpp = '1' THEN                                                 
+--        vADDR(0)  := vSCOL(2);                                                  
+--      ELSE                                                                      
+--        vADDR(0) := S_FEXTEND AND S_FONT0(12);                                  
+--      END IF;                                                                   
                                                                                   
---      IF S_FONT_4bpp = '1' THEN                                                 --
---        vADDR(0)  := vSCOL(2);                                                  --
---      ELSE                                                                      --
---        vADDR(0) := S_FEXTEND AND vATR(4);                                      --
---      END IF;                                                                   --
-                                                                                  
---      MA <= "10" & vADDR;                                                       --
+--      MA <= "10" & vADDR;                                                       
       MA <= "10" & S_FADDR & S_FA00;
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
     IF STAGE5 = '1' THEN                                                        --
---      IF S_FONT_4bpp = '1' THEN                                                 --
---        vADDR(0) := NOT(vSCOL(2));                                              --
---      ELSE                                                                      --
---        vADDR(0) := S_FEXTEND AND vATR(4);                                      --
---      END IF;                                                                   --
+--      IF S_FONT_4bpp = '1' THEN                                                 
+--        vADDR(0) := NOT(vSCOL(2));                                              
+--      ELSE                                                                      
+--        vADDR(0) := S_FEXTEND AND S_FONT0(12);                                  
+--      END IF;                                                                   
                                                                                   
---      MA <= "10" & vADDR;                                                       --
+--      MA <= "10" & vADDR;                                                       
       MA <= "10" & S_FADDR & S_FA01;
     END IF;                                                                     --
 ------------------------------------------------------------------------------- --
@@ -1174,17 +1181,17 @@ BEGIN                                                                           
     IF STAGE7 = '1' THEN                                                        --
       DOTBLANK <= '1';                                                          --
                                                                                   
---      M_HByte <= NOT M_F08Pix AND (NOT(vMCOL(3)) XOR (M_EXTATR AND vATR(6)));   --
---      M_HFlip <= M_EXTATR AND vATR(6);                                          --
-                                                                                  
---      S_HByte <= NOT S_F08Pix AND (NOT(vSCOL(3)) XOR (S_EXTATR AND vATR(6)));   --
---      S_HFlip <= S_EXTATR AND vATR(6);                                          --
+      M_HByte <= NOT M_F08Pix AND (NOT(vMCOL(3)) XOR (M_EXTATR AND M_FONT0(14)));   --
+      M_HFlip <= M_EXTATR AND M_FONT0(14);                                          --
+                                                                                
+      S_HByte <= NOT S_F08Pix AND (NOT(vSCOL(3)) XOR (S_EXTATR AND S_FONT0(14)));   --
+      S_HFlip <= S_EXTATR AND S_FONT0(14);                                          --
 
-      M_HByte <= NOT M_F08Pix AND (NOT(M_COL(3)) XOR M_HF);
-      M_HFlip <= M_HF;
-
-      S_HByte <= NOT S_F08Pix AND (NOT(S_COL(3)) XOR S_HF);
-      S_HFlip <= S_HF;
+--      M_HByte <= NOT M_F08Pix AND (NOT(M_COL(3)) XOR M_HF);
+--      M_HFlip <= M_HF;
+  
+--      S_HByte <= NOT S_F08Pix AND (NOT(S_COL(3)) XOR S_HF);
+--      S_HFlip <= S_HF;
                                                                                   
       MSEL <= '0';                                                              --
     END IF;                                                                     --
