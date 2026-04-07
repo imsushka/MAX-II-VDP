@@ -10,9 +10,11 @@ ENTITY VGA_REGS IS
 		CLK     : IN  STD_LOGIC;
 		RESET_n : IN  STD_LOGIC;
 
-		CS      : IN  STD_LOGIC;
-		A       : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
-		D       : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+		CSR     : IN  STD_LOGIC;
+		CSM     : IN  STD_LOGIC;
+		MEM16   : IN  STD_LOGIC;
+		A       : IN  STD_LOGIC_VECTOR(18 DOWNTO 0);
+		D       : IN  STD_LOGIC_VECTOR(15 DOWNTO 0);
 
 		CONTROL : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 		HSCROLLM: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
@@ -50,13 +52,23 @@ SIGNAL	OEo : STD_LOGIC;
 SIGNAL	OEn : STD_LOGIC;
 SIGNAL	OE  : STD_LOGIC;
 
+SIGNAL	B_HE :  STD_LOGIC;
+SIGNAL	B_LE :  STD_LOGIC;
 SIGNAL	B_ADDR    : STD_LOGIC_VECTOR(18 DOWNTO 0);
-SIGNAL	B_DATA    : STD_LOGIC_VECTOR(7 DOWNTO 0);
+SIGNAL	B_DATA    : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+SIGNAL	REG0_SEL : STD_LOGIC;
+SIGNAL	REG2_SEL : STD_LOGIC;
+SIGNAL	REG7_SEL : STD_LOGIC;
 
 BEGIN
 
 OE <= '1' WHEN OEn = '1' AND OEo = '0' ELSE '0';
 
+
+REG0_SEL <= NOT(CSR) AND NOT(A(2)) AND NOT(A(1));
+REG2_SEL <= NOT(CSR) AND NOT(A(2)) AND     A(1);
+REG7_SEL <= NOT(CSR) AND     A(2)  AND     A(1) AND A(0);
 -------------------------------------------------------------------------------
 -- REGISTERS
 -------------------------------------------------------------------------------
@@ -83,16 +95,16 @@ OE <= '1' WHEN OEn = '1' AND OEo = '0' ELSE '0';
 -- (   23) 0101 x--- NONE
 
 -- (   24) 0110 ---x Master cursor
--- (   25) 0110 --x- NONE
--- (   26) 0110 -x-- NONE
--- (   27) 0110 x--- NONE
+-- (   25) 0110 --x- Master cursor flash
+-- (   26) 0110 -x-- ????
+-- (   27) 0110 x--- ????
 --     
 -- (   28) 0111 ---x M_SPLIT_ENABLE
 -- (   29) 0111 --x- S_SPLIT_ENABLE
 -- (   30) 0111 -x-- B_SPLIT_ENABLE
 -- (   31) 0111 x--- SPRITE_ENABLE
 --
--- (63-32) 1xxx      NONE
+-- (63-32) 1xxx      ????
 --
 -- PALETE_ADDRhi ( x6 ) 
 -- 7-0 ADDR        1AAAAAAAA
@@ -176,9 +188,22 @@ BEGIN
 
     WE <= '0';
 
-    IF CS = '0' THEN
-      CASE A IS
+    IF CSR = '0' THEN
+      CASE A(2 DOWNTO 0) IS
       WHEN "000" => -- ADDRESS MEMORY 256 KBytes / Increment
+--          IF D(7 DOWNTO 6) = "00" THEN                 
+--            REG_ADDR( 5 DOWNTO  0) := D( 5 DOWNTO  0); 
+--          END IF;                                      
+--          IF D(7 DOWNTO 6) = "01" THEN                 
+--            REG_ADDR(11 DOWNTO  6) := D( 5 DOWNTO  0); 
+--          END IF;                                      
+--          IF D(7 DOWNTO 6) = "10" THEN                 
+--            REG_ADDR(17 DOWNTO 12) := D( 5 DOWNTO  0); 
+--          END IF;                                      
+--          IF D(7 DOWNTO 6) = "11" THEN                 
+--            REG_INC                := D( 4 DOWNTO  0); 
+--            REG_ADDR(18)           := D( 5);           
+--          END IF;                                      
         CASE D(7 DOWNTO 6) IS
         WHEN "00" => REG_ADDR( 5 DOWNTO  0) := D( 5 DOWNTO  0);
         WHEN "01" => REG_ADDR(11 DOWNTO  6) := D( 5 DOWNTO  0);
@@ -188,7 +213,10 @@ BEGIN
         END CASE;
       WHEN "001" => -- DATA for write to memory
         B_ADDR <= REG_ADDR;
-        B_DATA <= D;
+        B_LE   <= REG_ADDR(0);
+        B_HE   <= NOT(REG_ADDR(0));
+        B_DATA(7 DOWNTO 0)  <= D(7 DOWNTO 0);
+        B_DATA(15 DOWNTO 8) <= D(7 DOWNTO 0);
         WR     := '1';
         REG_ADDR := REG_ADDR + REG_INC;
       WHEN "010" =>
@@ -200,15 +228,15 @@ BEGIN
         WHEN "0001" =>
           VCURSOR <= D(6 DOWNTO 0);
         WHEN "0010" =>
-          HSCROLLM <= D;
+          HSCROLLM <= D(7 DOWNTO 0);
         WHEN "0011" =>
           VSCROLLM <= D(6 DOWNTO 0);
         WHEN "0100" =>
-          HSCROLLS <= D;
+          HSCROLLS <= D(7 DOWNTO 0);
         WHEN "0101" =>
           VSCROLLS <= D(6 DOWNTO 0);
         WHEN "0110" =>
-          HSCROLLB <= D;
+          HSCROLLB <= D(7 DOWNTO 0);
         WHEN "0111" =>
           VSCROLLB <= D(6 DOWNTO 0);
         WHEN "1000" =>
@@ -231,15 +259,14 @@ BEGIN
           B_SPLIT1(6)          <= D(5);
         WHEN "1110" =>
         WHEN "1111" =>
---        WHEN "10000" => M_START   <= D;
---        WHEN "10001" => S_START   <= D;
---        WHEN "10010" => B_START   <= D;
---        WHEN "10011" => F_START   <= D;
---        WHEN "10100" => SPR_START <= D;
---        WHEN "10101" => SF_START  <= D;
+--        WHEN "10000" => M_START   <= D(7 DOWNTO 0);
+--        WHEN "10001" => S_START   <= D(7 DOWNTO 0);
+--        WHEN "10010" => B_START   <= D(7 DOWNTO 0);
+--        WHEN "10011" => F_START   <= D(7 DOWNTO 0);
+--        WHEN "10100" => SPR_START <= D(7 DOWNTO 0);
+--        WHEN "10101" => SF_START  <= D(7 DOWNTO 0);
         END CASE;
         ADDR := ADDR + 1;
-
       WHEN "100" =>
       WHEN "101" =>
       WHEN "110" =>
@@ -261,14 +288,29 @@ BEGIN
         WE <= '1';
       END IF;
     END IF;
-  END IF;
 
+    IF CSM = '0' THEN
+      B_ADDR <= A;
+      IF MEM16 = '0' THEN
+        B_DATA(7 DOWNTO 0)  <= D(7 DOWNTO 0);
+        B_DATA(15 DOWNTO 8) <= D(7 DOWNTO 0);
+        B_LE <= A(0);
+        B_HE <= NOT(A(0));
+      ELSE
+        B_DATA <= D;
+        B_LE <= '0';
+        B_HE <= '0';
+      END IF;
+      WR     := '1';
+    END IF;
+
+  END IF;
 END PROCESS;
 
 MA   <= B_ADDR(18 DOWNTO 1);
-MDo  <= B_DATA & B_DATA;
-MBLE <= B_ADDR(0);
-MBHE <= NOT(B_ADDR(0));
+MDo  <= B_DATA;
+MBLE <= B_LE;
+MBHE <= B_HE;
 MWE  <= NOT(WE AND MSEL);
 
 -------------------------------------------------------------------------------
