@@ -74,34 +74,33 @@ REG7_SEL <= NOT(CSR) AND     A(2)  AND     A(1) AND A(0);
 -------------------------------------------------------------------------------
 -- CONTROL  ( x7 )
 --       D 7654 3210
--- ( 2- 0) 0000 -xxx Master video mode
--- (    3) 0000 x--- Master multy font
+-- ( 2- 0) 0000 -xxx Main screen video mode
+-- (    3) 0000 x--- Main screen multy font
 
--- ( 5- 4) 0001 --xx Master scale          (00/01 - 1x, 10 - 2x, 11 - 4x)
--- ( 7- 6) 0001 xx-- Master bits           (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
+-- ( 5- 4) 0001 --xx Main screen scale       (00/01 - 1x, 10 - 2x, 11 - 4x)
+-- ( 7- 6) 0001 xx-- Main screen bits        (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
 --
--- (10- 8) 0010 -xxx Slave video mode
--- (   11) 0010 x--- Slave multy font
+-- (10- 8) 0010 -xxx Secondary screen video mode
+-- (   11) 0010 x--- Secondary screen multy font
 
--- (13-12) 0011 --xx Slave scale           (00 - Slave disable, 01 - 1x, 10 - 2x, 11 - 4x)
--- (15-14) 0011 xx-- Slave bits            (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
+-- (13-12) 0011 --xx Secondary screen scale  (00 - Slave disable, 01 - 1x, 10 - 2x, 11 - 4x)
+-- (15-14) 0011 xx-- Secondary screen bits   (00 - 1bpp, 01 - 2bpp, 10 - 4bpp, 11 - 1bppE)
 
--- (17-16) 0100 --xx Background video mode
+-- (17-16) 0100 --xx Background screen video mode
 -- (   18) 0100 -x-- NONE
--- (   19) 0100 x--- Background multy font
+-- (   19) 0100 x--- Background screen multy font
 
--- (21-20) 0101 --xx Background scale      (00 - Background disable, 01 - 1x, 10 - 2x, 11 - 4x)
--- (   22) 0101 -x-- Background bits       (0  - 1bpp, 1 - 2bpp)
--- (   23) 0101 x--- NONE
+-- (21-20) 0101 --xx Background screen scale (00 - Background disable, 01 - 1x, 10 - 2x, 11 - 4x)
+-- (23-22) 0101 xx-- Background screen bits  (00 - 1bpp, 01 - 2bpp, 11 - 1bppE)
 
--- (   24) 0110 ---x Master cursor
--- (   25) 0110 --x- Master cursor flash
+-- (   24) 0110 ---x Main screen cursor
+-- (   25) 0110 --x- Main screen cursor flash
 -- (   26) 0110 -x-- ????
 -- (   27) 0110 x--- ????
 --     
--- (   28) 0111 ---x M_SPLIT_ENABLE
--- (   29) 0111 --x- S_SPLIT_ENABLE
--- (   30) 0111 -x-- B_SPLIT_ENABLE
+-- (   28) 0111 ---x MS_SPLIT_ENABLE (Main screen split)
+-- (   29) 0111 --x- SS_SPLIT_ENABLE (Second screen split)
+-- (   30) 0111 -x-- BG_SPLIT_ENABLE (Background screen split)
 -- (   31) 0111 x--- SPRITE_ENABLE
 --
 -- (63-32) 1xxx      ????
@@ -121,18 +120,18 @@ REG7_SEL <= NOT(CSR) AND     A(2)  AND     A(1) AND A(0);
 -- REG_DATA ( x3 )
 -- 0000 -xxxxxxx HCURSOR
 -- 0001 -xxxxxxx VCURSOR
--- 0010 xxxxxxxx HSCROLLM
--- 0011 -xxxxxxx VSCROLLM
--- 0100 xxxxxxxx HSCROLLS
--- 0101 -xxxxxxx VSCROLLS
--- 0110 xxxxxxxx HSCROLLB
--- 0111 -xxxxxxx VSCROLLB
--- 1000 ---xxxxx M_SPLIT0
--- 1001 ---xxxxx M_SPLIT1
--- 1010 ---xxxxx S_SPLIT0
--- 1011 ---xxxxx S_SPLIT1
--- 1100 ---xxxxx B_SPLIT0
--- 1101 ---xxxxx B_SPLIT1
+-- 0010 xxxxxxxx HSCROLLM   (Main screen horizontal scroll)
+-- 0011 -xxxxxxx VSCROLLM   (Main screen vertical scroll)
+-- 0100 xxxxxxxx HSCROLLS   (Second screen horizontal scroll)
+-- 0101 -xxxxxxx VSCROLLS   (Second screen vertical scroll)
+-- 0110 xxxxxxxx HSCROLLB   (Background screen horizontal scroll)
+-- 0111 -xxxxxxx VSCROLLB   (Background screen vertical scroll)
+-- 1000 ---xxxxx MS_SPLIT0  (Main screen horizontal split top position)
+-- 1001 ---xxxxx MS_SPLIT1  (Main screen horizontal split bottom position)
+-- 1010 ---xxxxx SS_SPLIT0  (Second screen horizontal split top position)   
+-- 1011 ---xxxxx SS_SPLIT1  (Second screen horizontal split bottom position)
+-- 1100 ---xxxxx BG_SPLIT0  (Background screen horizontal split top position)   
+-- 1101 ---xxxxx BG_SPLIT1  (Background screen horizontal split bottom position)
 -- 1110
 -- 1111
 --
